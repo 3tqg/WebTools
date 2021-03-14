@@ -49,11 +49,28 @@ $(document).ready(function() {
       }
     }
   }
-  $('button').click(function() {
+  $('#Remove-Inline-CSS').click(function() {
     var input = $("#input").val();
     console.log(input);
     var StrippedString = input.replace(/style=(\'|\")([ -0-9a-zA-Z:]*[ 0-9a-zA-Z;]*)*\1/g, '');
     $("#output").val(StrippedString);
   });
-  // document ready
+  $('#Paste-Code').click(function() {
+    let inp = navigator.clipboard.readText();
+    $("#input").val(inp);
+  });
+  $('#Copy-Code').click(function() {
+    $("#output").select();
+    document.execCommand('copy');
+  });
+  $("#Auto").click(function() {
+    let inp = navigator.clipboard.readText();
+    $("#input").val(inp);
+    var input = $("#input").val();
+    console.log(input);
+    var StrippedString = input.replace(/style=(\'|\")([ -0-9a-zA-Z:]*[ 0-9a-zA-Z;]*)*\1/g, '');
+    $("#output").val(StrippedString);
+    $("#output").select();
+    document.execCommand('copy');
+  });
 });
